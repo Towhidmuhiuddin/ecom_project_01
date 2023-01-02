@@ -1,0 +1,51 @@
+
+{% extends 'store/layouts/main.html' %}
+
+{% block content %}
+<!------------CSS start--------->
+<style>
+    .product_img{
+        width: 80%;
+        height: 200px;
+    }  
+</style>
+<!------------CSS end--------->
+
+<div class="py-3 bg-primary">
+    <div class="container">
+        <a class="text-white" href="{% url 'home' %}">Home/</a>
+        <a class="text-white" href="{% url 'collections' %}">collections/</a>
+        <a class="text-white" href="{% url 'collectionsview' category.slug %}">{{category.slug}}</a>
+    </div>
+</div>
+
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-12">
+        <h2>{{category.name}}</h2><hr>
+            <div class="row">
+                {% for item in products %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <a href="{% url 'productview' item.category.slug item.slug %}">
+                            <div class="card-body">
+                                <div class="category-image">
+                                    <img src="{{item.product_image.url}}" alt="product image" class="product_img"/>
+                                </div>  
+                                <h4>{{item.name}}</h4>
+                                <span class="float-start">{{item.original_price |stringformat:'d'}}</span>  
+                                <span class="float-end">{{item.selling_price |stringformat:'d'}}</span>  
+                            </div> 
+                        </a>  
+                    </div>   
+                </div>    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {{category}}
+{% endblock content %}
+
