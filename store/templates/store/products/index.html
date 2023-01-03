@@ -2,14 +2,14 @@
 {% extends 'store/layouts/main.html' %}
 
 {% block content %}
-<!------------CSS start--------->
+
 <style>
     .product_img{
         width: 80%;
         height: 200px;
     }  
 </style>
-<!------------CSS end--------->
+
 
 <div class="py-3 bg-primary">
     <div class="container">
@@ -26,7 +26,7 @@
             <div class="row">
                 {% for item in products %}
                 <div class="col-md-3">
-                    <div class="card">
+                    <div class="card mb-4">
                         <a href="{% url 'productview' item.category.slug item.slug %}">
                             <div class="card-body">
                                 <div class="category-image">
