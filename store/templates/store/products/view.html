@@ -8,9 +8,15 @@
     #products_img{
         height: 370px;
         width:80% ;
+        
     }
+    .product-viewtag{
+        margin-top: 13em;
+        margin-right:4em;
+    }   
 </style>
 
+    
 
 <div class="py-3 bg-primary">
     <div class="container">
@@ -63,10 +69,11 @@
                                     {% csrf_token %}
                                     <input type="hidden" value="{{products.id}}" class="prod_id">
                                     <label for="quantity">Quantity</label> <br/>
-                                    <div class="input-group text-center mb-3" style="130px">
-                                    <button class="input-group-text decrement-btn">-</button>
-                                    <input type="text" name="quantity" class="form-control qty-input text-center" value="1">    
-                                    <button class="input-group-text increment-btn">+</button> 
+                                        <div class="input-group text-center mb-3" style="130px">
+                                        <button class="input-group-text decrement-btn">-</button>
+                                        <input type="text" name="quantity" class="form-control qty-input text-center" value="1">    
+                                        <button class="input-group-text increment-btn">+</button>
+                                        </div> 
                                 </div> 
                             </div>
                             <div class="">
@@ -92,6 +99,8 @@
 </div>
 </div>
 </div>
+
+
 
     {{category}}
 {% endblock content %}

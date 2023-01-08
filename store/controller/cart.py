@@ -22,11 +22,16 @@ def addtocart(request):
                         Cart.objects.create(user=request.user, product_id=prod_id,product_qty=prod_qty)
                         return JsonResponse({'status':'Product added Successfully'})
                     else:
-                        return JsonResponse({'status':'Only'+ str(product_check) + 'quantity are available'})        
+                        return JsonResponse({'status':'Only '+ str(product_check.quantity) + ' quantity are available'})        
 
             else:
                 return JsonResponse({'status':'No such product found'})    
 
         else:
             return JsonResponse({'status':'Login to Continue'})    
-    return redirect('/')    
+    return redirect('/')
+
+def viewcart(request):
+    cart = Cart.objects.filter(user=request.user)
+    context = {'cart':cart}
+    return render(request,'store/cart.html',context)        
