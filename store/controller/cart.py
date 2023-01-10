@@ -2,6 +2,8 @@ from django.http.response import JsonResponse
 from django.shortcuts import render,redirect
 from django.contrib import messages
 
+from django.contrib.auth.decorators import login_required
+
 from store.models import Product,Cart
 
 def addtocart(request):
@@ -30,6 +32,8 @@ def addtocart(request):
         else:
             return JsonResponse({'status':'Login to Continue'})    
     return redirect('/')
+
+@login_required(login_url='loginpage')       #it is using for reload to the login page
 
 def viewcart(request):
     cart = Cart.objects.filter(user=request.user)
