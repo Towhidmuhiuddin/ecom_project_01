@@ -62,6 +62,7 @@
                                 </div>
                             </div>
                             {% endfor %}
+                            <a href="{% url 'checkout' %}" class="btn btn-outline-success"> Checkout </a>
                         {% else %}
                         <h4>You have empty cart</h4>
                         {% endif %}
