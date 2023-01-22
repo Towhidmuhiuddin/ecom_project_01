@@ -67,7 +67,8 @@ class Order(models.Model):
     city = models.CharField(max_length=150, null=False)      
     state = models.CharField(max_length=150, null=False)      
     country = models.CharField(max_length=150, null=False)      
-    pincode = models.CharField(max_length=150, null=False)      
+    pincode = models.CharField(max_length=150, null=False)
+
     total_price = models.FloatField(null=False)      
     payment_mode = models.CharField(max_length=150, null=False)      
     payment_id = models.CharField(max_length=250, null=True) 
@@ -93,4 +94,17 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(null=False)
 
     def __str__(self):
-        return '{}-{}'.format(self.order.id,self.order.tracking_no)          
+        return '{}-{}'.format(self.order.id,self.order.tracking_no)  
+
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE) 
+    phone =models.CharField(max_length=50, null=False)
+    address = models.TextField(null=False)     
+    city = models.CharField(max_length=150, null=False)      
+    state = models.CharField(max_length=150, null=False)      
+    country = models.CharField(max_length=150, null=False)      
+    pincode = models.CharField(max_length=150, null=False)  
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username              
